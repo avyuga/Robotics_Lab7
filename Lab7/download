@@ -1,0 +1,15 @@
+pip install python-ev3dev --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --trusted-host pypi.org
+
+def multiply(nx, mx, ny, my, x, y):
+    res = []
+    if mx == ny:
+        elem = 0
+        for i in range(0, int(nx*mx), int(mx)):        # для всех строк в первой матрице
+            for k in range(0, int(my)):        # для каждого столбца во второй матрице
+                for j in range(i, i+int(mx)):        # подсчет значения каждого пересечения
+                    elem += float(x[j]) * float(y[k+(j-i)*int(my)])
+                res.append(elem)
+                elem = 0
+        return res
+    else:
+        return None
