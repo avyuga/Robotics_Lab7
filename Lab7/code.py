@@ -13,21 +13,20 @@ sound = Sound()
 sound.set_volume(100)
 sound.beep()
 
-# первая координата - motorA
-# вторая координата - motorB
-# третья координата - motorC
+# РїРµСЂРІР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorA
+# РІС‚РѕСЂР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorB
+# С‚СЂРµС‚СЊСЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorC
 q0 = [90, 45, 45]
 q = [5 * q0[0], 5 * q0[1], 5/3 * q0[2]]
 
-# значение коэффициентов в градусных мерах
-k_p = [10, 20, 10]
-k_i = [10, 5, 4]
-k_d = [0, 5, 0]
+# Р·РЅР°С‡РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ РІ РіСЂР°РґСѓСЃРЅС‹С… РјРµСЂР°С…
+k_p = [0.6, 0.3, 0.5]
+k_i = [0.00001, 0.00001, 0.00001]
+k_d = [0.9, 0.1, 0.1]
 
-
-motorA = MediumMotor('outA')
+motorA = LargeMotor('outA')
 motorB = LargeMotor('outB')
-motorC = LargeMotor('outC')
+motorC = MediumMotor('outC')
 
 motorA.position = 0
 motorB.position = 0
@@ -37,27 +36,27 @@ timeStart = time.time()
 last_t = time.time()
 sum = 0
 last_e = 0
-inaccuracy = 2  # погрешность в градусах
+inaccuracy = 10  # РїРѕРіСЂРµС€РЅРѕСЃС‚СЊ РІ РіСЂР°РґСѓСЃР°С…
 
-name = str(q[0]) + "_" + str(q[1]) + "_" + str(q[2]) + ".txt"
+name = str(q0[0]) + "_" + str(q0[1]) + "_" + str(q0[2]) + ".txt"
 file = open(name, 'w')
 
 motors_set = [motorA, motorB, motorC]
-
-for i in range(3):
-    while abs(motors_set[i].position + inaccuracy) < q[i]:
-        e = q[i] - motors_set[i].position
-        dt = time.time() - last_t
-        U = k_p[i] * e + k_d[i] * (e - last_e) / dt + k_i[i] * sum * dt
-
-        motors_set[i].run_direct(duty_cycle_sp=saturate(U, -100, 100))
-        file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\n')
-
-        sum += e
-        last_e = e
+while time.time() - timeStart < 20:
+    for i in range(3):
+        while abs(motors_set[i].position + inaccuracy) < q[i]:
+            e = q[i] - motors_set[i].position
+            dt = time.time() - last_t
+            U = k_p[i] * e + k_d[i] * (e - last_e) / dt + k_i[i] * sum * dt
+            motors_set[i].run_direct(duty_cycle_sp=saturate(U, -100, 100))
+            file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\t' + str(
+                saturate(U, -100, 100)) + '\n')
+            sum += e
+            last_e = e
+            last_t = time.time()
+        sum = 0
+        last_e = 0
         last_t = time.time()
-    sum = 0
-    last_e = 0
-    last_t = time.time()
+
 
 file.close()
