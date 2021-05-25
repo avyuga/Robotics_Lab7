@@ -13,17 +13,17 @@ sound = Sound()
 sound.set_volume(100)
 sound.beep()
 
-# первая координата - motorA
-# вторая координата - motorB
-# третья координата - motorC
-Q = [[90, 45, 45], [90, 50, 60], [70, 50, 60], [90, 40, 40], [90, 80, 80]]
+# РїРµСЂРІР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorA
+# РІС‚РѕСЂР°СЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorB
+# С‚СЂРµС‚СЊСЏ РєРѕРѕСЂРґРёРЅР°С‚Р° - motorC
+Q = [[90, -2, 78], [-27, 34, 57], [20, -10, 20], [0, 45, 10], [-90, 90, 0]]
 
-# значение коэффициентов в градусных мерах
+# Р·РЅР°С‡РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ РІ РіСЂР°РґСѓСЃРЅС‹С… РјРµСЂР°С…
 k_p = [0.3, 0.3, 0.1]
 k_i = [0.25 / 60, 0.25 / 60, 0]
 k_d = [1 / 60, 1 / 60, 0]
 
-inaccuracy = 5  # погрешность в градусах
+inaccuracy = 5  # РїРѕРіСЂРµС€РЅРѕСЃС‚СЊ РІ РіСЂР°РґСѓСЃР°С…
 U_max = 6.97
 
 motorA = LargeMotor('outA')
@@ -38,27 +38,24 @@ motors_set = [motorA, motorB, motorC]
 
 for i in range(5):
     q0 = Q[i]
-    name = "square1_" + str(q0[0]) + "_" + str(q0[1]) + "_" + str(q0[2]) + ".txt"
+    name = "square1_" + str(i) + "___" + str(q0[0]) + "_" + str(q0[1]) + "_" + str(q0[2]) + ".txt"
     file = open(name, 'w')
 
-    # калибровка координат
+    # РєР°Р»РёР±СЂРѕРІРєР° РєРѕРѕСЂРґРёРЅР°С‚
     q0 = [saturate(q0[0], -180, 180), saturate(q0[1], -70, 40), saturate(q0[2], -120, 100)]
-    q = [5 * q0[0], -5 * q0[1], -5/3 * q0[2]]
+    q = [5 * q0[0], -5 * q0[1], -5 / 3 * q0[2]]
 
     timeStart = time.time()
     last_t = time.time()
     sum = 0
     last_e = 0
 
-    name = str(q0[0]) + "_" + str(q0[1]) + "_" + str(q0[2]) + ".txt"
-    file = open(name, 'w')
-
     for j in range(3):
         while abs(q[j] - motors_set[j].position) > inaccuracy:
             e = q[j] - motors_set[j].position
             dt = time.time() - last_t
             U = k_p[j] * e + k_d[j] * (e - last_e) / dt + k_i[j] * sum * dt
-            U = U/U_max*100
+            U = U / U_max * 100
             motors_set[j].run_direct(duty_cycle_sp=saturate(U, -100, 100))
             file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\t' + str(
                 saturate(U, -100, 100)) + '\t' + str(k_p[j] * e) + '\t' + str(k_d[j] * (e - last_e) / dt) + '\t' +
@@ -71,5 +68,9 @@ for i in range(5):
         last_t = time.time()
         motors_set[j].run_direct(duty_cycle_sp=0)
 
+    sound = Sound()
+    sound.set_volume(100)
+    sound.beep
+    time.sleep(3)
 
 file.close()
