@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[height=25cm, a4paper, hmargin={3cm, 2cm}]{geometry}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[section]{placeins}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage[numbered, framed]{matlab-prettifier}
+\graphicspath{{}}
+
+\makeatletter
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \hbox to\textwidth{\hfill\parbox{0.8\textwidth}{\begin{center}#1: #2\end{center}}\hfill}
+  \vskip\belowcaptionskip}
+\makeatother
+
+\begin{document}
+	\pagestyle{empty}
+	\begin{titlepage}
+	\begin{center}
+		\large{
+		Министерство образования и науки Российской Федерации\\Федеральное государственное автономное образовательное учреждение высшего образования}\\
+		\vspace*{3em plus 7em minus 6em}
+		\Large
+		САНКТ-ПЕТЕРБУРГСКИЙ НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ \\УНИВЕРСИТЕТ ИНФОРМАЦИОННЫХ ТЕХНОЛОГИЙ, МЕХАНИКИ И ОПТИКИ\\
+		\vspace*{3em plus 7em minus 6em}
+		\Large
+		Факультет систем управления и робототехники\\
+		\vspace*{7em plus 7em minus 6em}
+		\LARGE
+		{\bf
+		Отчет по лабораторной работе №6 \\ <<Разработка системы управления для неполноприводного робота>> \\по дисциплине <<Введение в профессиональную деятельность>>}\\
+	\end{center}
+	\begin{flushright}
+		\Large
+		\vspace*{10em plus 11em minus 9em}
+		Выполнили студенты гр. {\textbf {R3135}}\\
+		Трубицына А.М.\\
+		Вьюгина А.П.\\
+		Репин А.В.\\
+		Макаренко К.С.\\
+		Преподаватель: Перегудин А.А.,\\
+		ассистент фак. СУиР		
+	\end{flushright}
+	\vspace*{15em plus 7em minus 6em}
+	\begin{center}
+		Санкт-Петербург 2020
+	\end{center}
+	\end{titlepage}
+
+
+\section{Цель работы}
+Ознакомиться со способом нахождения параметров манипулятора и научиться переходить из декартовых координат в обобщенные и обратно.
+
+\section{Описание собранного робота}
+
+\section{Коды для перехода из одной системы координат в другую}
+\subsection{Функция для перехода из обобщенной СК в Декартову с помощью геометрических расчетов}
+\begin{minted}[linenos=true]{python}
+def straight_transfer_formulas(theta1, theta2, theta3):
+    theta3 = theta2-theta3
+    theta1 = np.deg2rad(theta1)
+    theta2 = np.deg2rad(theta2)
+    theta3 = np.deg2rad(theta3)
+    a = [0, 0.007, 0.128, 0.128]  # массив значений a_i
+    alpha = [0, pi / 2, 0, 0]
+    d = [0, 0.18, 0, 0]  # массив значений d_i
+    x = (a[2] * cos(theta2) + a[3] * cos(theta3)) * cos(theta1)
+    y = (a[2] * cos(theta2) + a[3] * cos(theta3)) * sin(theta1)
+    z = d[1] + a[2] * sin(theta2) + a[3] * sin(theta3)
+    print("x = ", x)
+    print("y = ", y)
+    print("z = ", z)
+
+\end{minted}
+
+\subsection{Функция для перехода из обощенной СК в Декартову с помощью матричных расчетов}
+\begin{minted}[linenos=true, breaklines=true]{python}
+def straight_transfer(theta1, theta2, theta3):
+    theta3 = -theta3
+    # перевод из градусов в радианы
+    theta1 = np.deg2rad(theta1)
+    theta2 = np.deg2rad(theta2)
+    theta3 = np.deg2rad(theta3)
+    Q = np.array([[0], [0], [0], [1]])
+
+    a = [0, 0, 0.128, 0.128]  # массив значений a_i
+    alpha = [0, pi / 2, 0, 0]
+    #alpha = [0, pi / 2, 0, pi / 2]
+    d = [0, 0.18, 0, 0]  # массив значений d_i
+
+    T_0_1 = np.array([[cos(theta1), -sin(theta1) * cos(alpha[1]), sin(theta1) * sin(alpha[1]), a[1] * cos(theta1)],
+                      [sin(theta1), cos(theta1) * cos(alpha[1]), -cos(theta1) * sin(alpha[1]), a[1] * sin(theta1)],
+                      [0, sin(alpha[1]), cos(alpha[1]), d[1]],
+                      [0, 0, 0, 1]])
+
+    T_1_2 = np.array([[cos(theta2), -sin(theta2) * cos(alpha[2]), sin(theta2) * sin(alpha[2]), a[2] * cos(theta2)],
+                      [sin(theta2), cos(theta2) * cos(alpha[2]), -cos(theta2) * sin(alpha[2]), a[2] * sin(theta2)],
+                      [0, sin(alpha[2]), cos(alpha[2]), d[2]],
+                      [0, 0, 0, 1]])
+
+    T_2_3 = np.array([[cos(theta3), -sin(theta3) * cos(alpha[3]), sin(theta3) * sin(alpha[3]), a[3] * cos(theta3)],
+                      [sin(theta3), cos(theta3) * cos(alpha[3]), -cos(theta3) * sin(alpha[3]), a[3] * sin(theta3)],
+                      [0, sin(alpha[3]), cos(alpha[3]), d[3]],
+                      [0, 0, 0, 1]])
+    T = T_0_1.dot(T_1_2).dot(T_2_3)
+    XYZ = T.dot(Q)
+    print("x = ", XYZ[0][0])
+    print("y = ", XYZ[1][0])
+    print("z = ", XYZ[2][0])
+\end{minted}
+
+\subsection{Функция для перехода из Декартовой СК в обобщенную}
+\begin{minted}[linenos=true]{python}
+def backwards_transfer(x, y, z):
+    a = [0, 0, 0.128, 0.128]  # массив значений a_i
+    d = [0, 0.18, 0, 0]  # массив значений d_i
+    r1 = sqrt(x ** 2 + y ** 2)
+    r2 = z - d[1]
+    r3 = sqrt(r1 ** 2 + r2 ** 2)
+    
+    theta1 = atan(y / x)
+    psi1 = acos((a[2] ** 2 + r3 ** 2 - a[3] ** 2) / (2 * a[2] * r3))
+    psi2 = atan(r2 / r1)
+    theta2 = psi2 + psi1
+    psi3 = acos((a[2] ** 2 + a[3] ** 2 - r3 ** 2) / (2 * a[2] * a[3]))
+    theta3 = pi - psi3
+
+    theta1 = np.rad2deg(theta1)
+    theta2 = np.rad2deg(theta2)
+    theta3 = np.rad2deg(theta3)
+
+    print("theta1 = ", theta1)
+    print("theta2 = ", theta2)
+    print("theta3 = ", theta3)
+\end{minted}
+
+\section{Код для движения робота}
+\subsection{Поочередный поворот звеньев манипулятора на заданные углы}
+\begin{minted}[linenos=true, breaklines=true]{python}
+from ev3dev.ev3 import *
+import time
+
+
+def saturate(x, left, right):
+    if x > right: x = right
+    if x < left: x = left
+    return x
+
+
+sound = Sound()
+sound.set_volume(100)
+sound.beep()
+
+# первая координата - motorA
+# вторая координата - motorB
+# третья координата - motorC
+q0 = [90, 45, 45]
+
+# калибровка координат
+q0 = [saturate(q0[0], -180, 180), saturate(q0[1], -70, 40), saturate(q0[2], -120, 100)]
+q = [5 * q0[0], -5 * q0[1], -5/3 * q0[2]]
+
+# значение коэффициентов в градусных мерах
+k_p = [0.3, 0.3, 0.1]
+k_i = [0.25/60, 0.25/60, 0]
+k_d = [1/60, 1/60, 0]
+
+
+motorA = LargeMotor('outA')
+motorB = LargeMotor('outB')
+motorC = MediumMotor('outC')
+
+motorA.position = 0
+motorB.position = 0
+motorC.position = 0
+
+timeStart = time.time()
+last_t = time.time()
+sum = 0
+last_e = 0
+inaccuracy = 5  # погрешность в градусах
+U_max = 6.97
+
+name = str(q0[0]) + "_" + str(q0[1]) + "_" + str(q0[2]) + ".txt"
+file = open(name, 'w')
+
+motors_set = [motorA, motorB, motorC]
+
+for i in range(3):
+    while abs(q[i] - motors_set[i].position) > inaccuracy:
+        e = q[i] - motors_set[i].position
+        dt = time.time() - last_t
+        U = k_p[i] * e + k_d[i] * (e - last_e) / dt + k_i[i] * sum * dt
+        U = U/U_max*100
+        motors_set[i].run_direct(duty_cycle_sp=saturate(U, -100, 100))
+        file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\t' + str(
+            saturate(U, -100, 100)) + '\t' + str(k_p[i] * e) + '\t' + str(k_d[i] * (e - last_e) / dt) + '\t' +
+                   str(k_i[i] * sum * dt) + '\n')
+        sum += e
+        last_e = e
+        last_t = time.time()
+    sum = 0
+    last_e = 0
+    last_t = time.time()
+    motors_set[i].run_direct(duty_cycle_sp=0)
+
+file.close()
+\end{minted}
+
+\section{Выводы}
+
+\end{document}
