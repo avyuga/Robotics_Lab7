@@ -34,7 +34,7 @@
 		\vspace*{7em plus 7em minus 6em}
 		\LARGE
 		{\bf
-		Отчет по лабораторной работе №6 \\ <<Разработка системы управления для неполноприводного робота>> \\по дисциплине <<Введение в профессиональную деятельность>>}\\
+		Отчет по лабораторной работе №7 \\ <<Прямая и обратная задача кинематики. DH-параметры>> \\по дисциплине <<Введение в профессиональную деятельность>>}\\
 	\end{center}
 	\begin{flushright}
 		\Large
@@ -58,9 +58,25 @@
 Ознакомиться со способом нахождения параметров манипулятора и научиться переходить из декартовых координат в обобщенные и обратно.
 
 \section{Описание собранного робота}
+\subsection*{Параметры Денавита-Харденберга}
+\begin{tabular}{|l||c|c|c|c|}
+\hline
+Звено i & $a_i$ & $\alpha_i$ & $d_i$ & $\theta_i$\\
+\hline
+\hline
+1 & 0,7 см & $\frac{\pi}2$ & 18 см & $\theta_1$  \\ \hline
+2 & 12,8 см & 0 & 0 & $\theta_2$ + $\frac{\pi}2$ \\ \hline
+3 & 12,8 см & 0 & 0 & $\theta_3$\\
+\hline
+\end{tabular}
 
 \section{Коды для перехода из одной системы координат в другую}
 \subsection{Функция для перехода из обобщенной СК в Декартову с помощью геометрических расчетов}
+\subsubsection*{Вывод формул}
+$x = \cos{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
+$y = \sin{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
+$z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}$
+\subsubsection*{Код}
 \begin{minted}[linenos=true]{python}
 def straight_transfer_formulas(theta1, theta2, theta3):
     theta3 = theta2-theta3
@@ -80,6 +96,9 @@ def straight_transfer_formulas(theta1, theta2, theta3):
 \end{minted}
 
 \subsection{Функция для перехода из обощенной СК в Декартову с помощью матричных расчетов}
+\subsubsection*{Вывод формул}
+
+\subsubsection*{Код}
 \begin{minted}[linenos=true, breaklines=true]{python}
 def straight_transfer(theta1, theta2, theta3):
     theta3 = -theta3
