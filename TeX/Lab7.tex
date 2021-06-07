@@ -73,9 +73,25 @@
 \section{Коды для перехода из одной системы координат в другую}
 \subsection{Функция для перехода из обобщенной СК в Декартову с помощью геометрических расчетов}
 \subsubsection*{Вывод формул}
+\begin{figure}[h!]
+\begin{minipage}{.55\textwidth}
+\centering
+\includegraphics[width=150 pt]{str_formulas.png}
+\caption{Чертеж для вывода указанных формул}
+\end{minipage}
+\begin{minipage}{.55\textwidth}
+\centering
+Из чертежа: 
+$z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}$; \\
+$L = a_2\cos{\theta_2} + a_3\cos{\theta_3}$.\\
+Тогда \\
 $x = \cos{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
 $y = \sin{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
 $z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}$
+\end{minipage}
+\end{figure}
+\FloatBarrier
+
 \subsubsection*{Код}
 \begin{minted}[linenos=true]{python}
 def straight_transfer_formulas(theta1, theta2, theta3):
