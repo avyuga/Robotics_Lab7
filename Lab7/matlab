@@ -1,0 +1,37 @@
+results=dlmread('C:\Users\Anna\Documents\itmo\vpd\Lab7\Robotics_Lab7-main\OUT 25.05\square2\square2_4___-90_90_0.txt'); %считываем файл
+time=results(:,1);
+theta1=results(:,1); 
+theta2=results(:,2);
+theta3=results(:,3);
+% theta1=-27;
+% theta2=34;
+% theta3=57;
+theta1 = theta1*pi/180/5;
+theta2 = theta2*pi/180/(-5);
+theta3 = theta3*pi/180/(-5/3);
+theta3 = theta2-theta3;
+a = [ 0.007, 0.128, 0.128];
+d = [ 0.18, 0, 0];
+% x =(a(2)*cos(theta2) + a(3)*cos(theta3))*(cos(theta1));
+% y = (a(2) * cos(theta2) + a(3) * cos(theta3))*(sin(theta1));
+% z = d(1) + a(2) * sin(theta2) + a(3) * sin(theta3);
+% disp(x);
+% disp(y);
+for i = 1:size(results)
+    x(i)=(a(2)*cos(theta2(i)) + a(3)*cos(theta3(i)))*(cos(theta1(i)));
+    y(i) = (a(2) * cos(theta2(i)) + a(3) * cos(theta3(i)))*(sin(theta1(i)));
+    z(i) = d(1) + a(2) * sin(theta2(i)) + a(3) * sin(theta3(i));
+end 
+% x=round(x, 4);
+% y=round(y, 4);
+% z=round(z, 4);
+% print("x = ", x)
+% print("y = ", y)
+% print("z = ", z)
+% print(x, ",", y, ",", z)
+
+hold on; plot3(x,y,z);
+
+% hold on; plot(time,a1);
+% hold on; plot(time,a2);
+% hold on; plot(time,a3);
