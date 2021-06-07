@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{straight\PYGZus{}transfer\PYGZus{}formulas}\PYG{p}{(}\PYG{n}{theta1}\PYG{p}{,} \PYG{n}{theta2}\PYG{p}{,} \PYG{n}{theta3}\PYG{p}{):}
+    \PYG{n}{theta3} \PYG{o}{=} \PYG{n}{theta2}\PYG{o}{\PYGZhy{}}\PYG{n}{theta3}
+    \PYG{n}{theta1} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{theta1}\PYG{p}{)}
+    \PYG{n}{theta2} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{theta2}\PYG{p}{)}
+    \PYG{n}{theta3} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{deg2rad}\PYG{p}{(}\PYG{n}{theta3}\PYG{p}{)}
+    \PYG{n}{a} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{0.007}\PYG{p}{,} \PYG{l+m+mf}{0.128}\PYG{p}{,} \PYG{l+m+mf}{0.128}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} массив значений a\PYGZus{}i}
+    \PYG{n}{alpha} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{pi} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+    \PYG{n}{d} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{0.18}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} массив значений d\PYGZus{}i}
+    \PYG{n}{x} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta2}\PYG{p}{)} \PYG{o}{+} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta3}\PYG{p}{))} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta1}\PYG{p}{)}
+    \PYG{n}{y} \PYG{o}{=} \PYG{p}{(}\PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta2}\PYG{p}{)} \PYG{o}{+} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{*} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{theta3}\PYG{p}{))} \PYG{o}{*} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{theta1}\PYG{p}{)}
+    \PYG{n}{z} \PYG{o}{=} \PYG{n}{d}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{*} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{theta2}\PYG{p}{)} \PYG{o}{+} \PYG{n}{a}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{*} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{theta3}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}x = \PYGZdq{}}\PYG{p}{,} \PYG{n}{x}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}y = \PYGZdq{}}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}z = \PYGZdq{}}\PYG{p}{,} \PYG{n}{z}\PYG{p}{)}
+\end{Verbatim}

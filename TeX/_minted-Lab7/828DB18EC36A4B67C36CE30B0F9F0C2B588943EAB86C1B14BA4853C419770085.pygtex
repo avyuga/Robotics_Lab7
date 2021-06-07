@@ -1,0 +1,70 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{ev3dev.ev3} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{import} \PYG{n+nn}{time}
+
+
+\PYG{k}{def} \PYG{n+nf}{saturate}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{left}\PYG{p}{,} \PYG{n}{right}\PYG{p}{):}
+    \PYG{k}{if} \PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{n}{right}\PYG{p}{:} \PYG{n}{x} \PYG{o}{=} \PYG{n}{right}
+    \PYG{k}{if} \PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{left}\PYG{p}{:} \PYG{n}{x} \PYG{o}{=} \PYG{n}{left}
+    \PYG{k}{return} \PYG{n}{x}
+
+
+\PYG{n}{sound} \PYG{o}{=} \PYG{n}{Sound}\PYG{p}{()}
+\PYG{n}{sound}\PYG{o}{.}\PYG{n}{set\PYGZus{}volume}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}
+\PYG{n}{sound}\PYG{o}{.}\PYG{n}{beep}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} первая координата \PYGZhy{} motorA}
+\PYG{c+c1}{\PYGZsh{} вторая координата \PYGZhy{} motorB}
+\PYG{c+c1}{\PYGZsh{} третья координата \PYGZhy{} motorC}
+\PYG{n}{q0} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{90}\PYG{p}{,} \PYG{l+m+mi}{45}\PYG{p}{,} \PYG{l+m+mi}{45}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZsh{} калибровка координат}
+\PYG{n}{q0} \PYG{o}{=} \PYG{p}{[}\PYG{n}{saturate}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{180}\PYG{p}{,} \PYG{l+m+mi}{180}\PYG{p}{),} \PYG{n}{saturate}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{70}\PYG{p}{,} \PYG{l+m+mi}{40}\PYG{p}{),} \PYG{n}{saturate}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{120}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{)]}
+\PYG{n}{q} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{5} \PYG{o}{*} \PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5} \PYG{o}{*} \PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{o}{/}\PYG{l+m+mi}{3} \PYG{o}{*} \PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]]}
+
+\PYG{c+c1}{\PYGZsh{} значение коэффициентов в градусных мерах}
+\PYG{n}{k\PYGZus{}p} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{l+m+mf}{0.1}\PYG{p}{]}
+\PYG{n}{k\PYGZus{}i} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.25}\PYG{o}{/}\PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mf}{0.25}\PYG{o}{/}\PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+\PYG{n}{k\PYGZus{}d} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{60}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}
+
+
+\PYG{n}{motorA} \PYG{o}{=} \PYG{n}{LargeMotor}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}outA\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{motorB} \PYG{o}{=} \PYG{n}{LargeMotor}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}outB\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{motorC} \PYG{o}{=} \PYG{n}{MediumMotor}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}outC\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{motorA}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{motorB}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{motorC}\PYG{o}{.}\PYG{n}{position} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+\PYG{n}{timeStart} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+\PYG{n}{last\PYGZus{}t} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+\PYG{n+nb}{sum} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{last\PYGZus{}e} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{inaccuracy} \PYG{o}{=} \PYG{l+m+mi}{5}  \PYG{c+c1}{\PYGZsh{} погрешность в градусах}
+\PYG{n}{U\PYGZus{}max} \PYG{o}{=} \PYG{l+m+mf}{6.97}
+
+\PYG{n}{name} \PYG{o}{=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{q0}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{])} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}.txt\PYGZdq{}}
+\PYG{n}{file} \PYG{o}{=} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{name}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{motors\PYGZus{}set} \PYG{o}{=} \PYG{p}{[}\PYG{n}{motorA}\PYG{p}{,} \PYG{n}{motorB}\PYG{p}{,} \PYG{n}{motorC}\PYG{p}{]}
+
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{):}
+    \PYG{k}{while} \PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{motors\PYGZus{}set}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{position}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{inaccuracy}\PYG{p}{:}
+        \PYG{n}{e} \PYG{o}{=} \PYG{n}{q}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{motors\PYGZus{}set}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{position}
+        \PYG{n}{dt} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{last\PYGZus{}t}
+        \PYG{n}{U} \PYG{o}{=} \PYG{n}{k\PYGZus{}p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{e} \PYG{o}{+} \PYG{n}{k\PYGZus{}d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{e} \PYG{o}{\PYGZhy{}} \PYG{n}{last\PYGZus{}e}\PYG{p}{)} \PYG{o}{/} \PYG{n}{dt} \PYG{o}{+} \PYG{n}{k\PYGZus{}i}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb}{sum} \PYG{o}{*} \PYG{n}{dt}
+        \PYG{n}{U} \PYG{o}{=} \PYG{n}{U}\PYG{o}{/}\PYG{n}{U\PYGZus{}max}\PYG{o}{*}\PYG{l+m+mi}{100}
+        \PYG{n}{motors\PYGZus{}set}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{run\PYGZus{}direct}\PYG{p}{(}\PYG{n}{duty\PYGZus{}cycle\PYGZus{}sp}\PYG{o}{=}\PYG{n}{saturate}\PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{100}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{))}
+        \PYG{n}{file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{motorA}\PYG{o}{.}\PYG{n}{position}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{motorB}\PYG{o}{.}\PYG{n}{position}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{motorC}\PYG{o}{.}\PYG{n}{position}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}
+            \PYG{n}{saturate}\PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{100}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{))} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{k\PYGZus{}p}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{e}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{k\PYGZus{}d}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{e} \PYG{o}{\PYGZhy{}} \PYG{n}{last\PYGZus{}e}\PYG{p}{)} \PYG{o}{/} \PYG{n}{dt}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{+}
+                   \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{k\PYGZus{}i}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n+nb}{sum} \PYG{o}{*} \PYG{n}{dt}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb}{sum} \PYG{o}{+=} \PYG{n}{e}
+        \PYG{n}{last\PYGZus{}e} \PYG{o}{=} \PYG{n}{e}
+        \PYG{n}{last\PYGZus{}t} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+    \PYG{n+nb}{sum} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{last\PYGZus{}e} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{last\PYGZus{}t} \PYG{o}{=} \PYG{n}{time}\PYG{o}{.}\PYG{n}{time}\PYG{p}{()}
+    \PYG{n}{motors\PYGZus{}set}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{run\PYGZus{}direct}\PYG{p}{(}\PYG{n}{duty\PYGZus{}cycle\PYGZus{}sp}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{n}{file}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+\end{Verbatim}
