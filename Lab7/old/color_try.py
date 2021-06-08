@@ -3,6 +3,11 @@ from ev3dev.ev3 import *
 import time
 
 
+
+# БЕЗ ДВИГАТЕЛЯ
+# БЕЗ КНОПКИ
+# TRY
+#
 Sound.beep()
 color_sensor = ColorSensor()
 color_sensor.mode = 'RGB-RAW'

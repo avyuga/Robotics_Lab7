@@ -86,10 +86,6 @@ def backwards_transfer(x, y, z):
     print(theta1, ",", theta2, ",", theta3)
 
 
-
 # принимает значения в градусах
-straight_transfer_formulas(10, 40, 30)
+straight_transfer_formulas(-12.4, -11.0, 87.6)
 print(" ")
-straight_transfer(10, 40, 30)
-print(" ")
-backwards_transfer(0.2207 , 0.0389 , 0.2845)

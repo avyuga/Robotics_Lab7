@@ -24,6 +24,11 @@ def straight_transfer_formulas(theta1, theta2, theta3):
     return(x, ",", y, ",", z)
 
 
+# DEPRECATED
+# КНОПКА НЕ НУЖНА
+# TRY
+#
+
 Sound.beep()
 color_sensor = ColorSensor('in4')
 button = TouchSensor('in3')

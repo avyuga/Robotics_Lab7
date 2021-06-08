@@ -9,6 +9,7 @@
 \usepackage{pdflscape}
 \usepackage{minted}
 \usepackage{amsmath}
+\usepackage{wrapfig}
 \usepackage[numbered, framed]{matlab-prettifier}
 \graphicspath{{}}
 
@@ -74,20 +75,30 @@
 \subsection{Функция для перехода из обобщенной СК в Декартову с помощью геометрических расчетов}
 \subsubsection*{Вывод формул}
 \begin{figure}[h!]
-\begin{minipage}{.55\textwidth}
+\begin{minipage}{.65\textwidth}
 \centering
-\includegraphics[width=150 pt]{str_formulas.png}
+\includegraphics[width=200 pt]{str_formulas.png}
 \caption{Чертеж для вывода указанных формул}
 \end{minipage}
-\begin{minipage}{.55\textwidth}
+\begin{minipage}{.35\textwidth}
 \centering
 Из чертежа: 
-$z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}$; \\
-$L = a_2\cos{\theta_2} + a_3\cos{\theta_3}$.\\
-Тогда \\
-$x = \cos{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
-$y = \sin{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3})$ \\
-$z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}$
+\begin{equation*}
+    \begin{cases}
+        z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3} \\
+        L = a_2\cos{\theta_2} + a_3\cos{\theta_3}
+    \end{cases}
+\end{equation*}
+
+Тогда итоговый результат равен\\
+\begin{equation*}
+    \begin{cases}
+        x = \cos{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3}) \\
+        y = \sin{\theta_1}(a_2\cos{\theta_2} + a_3\cos{\theta_3}) \\
+        z = d_1 + a_2\sin{\theta_2} + a_3\sin{\theta_3}
+    \end{cases}
+\end{equation*}
+
 \end{minipage}
 \end{figure}
 \FloatBarrier
@@ -247,6 +258,49 @@ for i in range(3):
 
 file.close()
 \end{minted}
+
+
+\section{Использование датчика цвета ColorSensor}
+\par В процессе работы появилась идея с помощью манипулятора реализовать механизм, который будет определять цвет предмета и записывать его координату. \\
+\parbox[b][4 cm][t]{50 mm}{
+\vspace{0.5 cm}
+    \centering
+    \includegraphics[width=.2\textwidth]{color_sensor.jpg}
+}
+\parbox[b][4 cm][t]{100 mm}{
+  \vspace{0.5 cm}
+\par Так как датчик определяет цвета достаточно неточно, то мы придумали некоторый алгоритм калибровки для попадания в классический 8-битный RGB интервал. Для этого мы удерживали датчик, смотрящий на белую бумагу, в одном положении, искали максимальное значение каждой компоненты света. В файл записывалось текущее значение компоненты, деленной на соответствующую максимальную и умноженное на 255. 
+}
+\par
+Так как точность все равно невелика, то возникла идея построить график каждой из компонент и выделить пиковые значения. 
+\subsection{Скрипты для реализации этой задачи}
+\subsubsection*{Код для калибровки датчика}
+\begin{minted}[linenos=true, breaklines=true]{python}
+red_component = blue_component = green_component = 0
+counter = 0
+while time.time() - time_start < 0.5:
+    counter += 1
+    red_component += color_sensor.value(0)
+    green_component += color_sensor.value(1)
+    blue_component += color_sensor.value(2)
+red_ideal = red_component/counter
+green_ideal = green_component/counter
+blue_ideal = blue_component/counter
+\end{minted}
+\subsubsection*{Код для построения графиков}
+\begin{minted}[linenos=true, frame=single,framesep=10pt,breaklines=true, breakafter=true]{Matlab}
+results=dlmread('C:\Users\Anastasia\PycharmProjects\Robotics_Lab7\OUT 8.06\code_color2.txt'); %считываем файл
+time = results(:, 1);
+red = results(:, 5);
+green = results(:, 6);
+blue = results(:, 7);
+hold on;
+plot(time, red, 'r');
+plot(time, green, 'g');
+plot(time, blue, 'b');
+\end{minted}
+
+
 
 \section{Выводы}
 

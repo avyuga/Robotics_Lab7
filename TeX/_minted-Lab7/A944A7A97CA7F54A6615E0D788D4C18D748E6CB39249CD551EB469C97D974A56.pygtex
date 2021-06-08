@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{results}\PYG{p}{=}\PYG{n}{dlmread}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}C:\PYGZbs{}Users\PYGZbs{}Anastasia\PYGZbs{}PycharmProjects\PYGZbs{}Robotics\PYGZus{}Lab7\PYGZbs{}OUT 8.06\PYGZbs{}code\PYGZus{}color2.txt\PYGZsq{}}\PYG{p}{);}\PYG{+w}{ }\PYG{c}{\PYGZpc{}считываем файл}
+\PYG{n+nb}{time}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{(:,}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{red}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{(:,}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{);}
+\PYG{n}{green}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{(:,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{);}
+\PYG{n}{blue}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{results}\PYG{p}{(:,}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{);}
+\PYG{n}{hold}\PYG{+w}{ }\PYG{l+s}{on}\PYG{p}{;}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n+nb}{time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{red}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n+nb}{time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{green}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}g\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n+nb}{time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{blue}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}b\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}
