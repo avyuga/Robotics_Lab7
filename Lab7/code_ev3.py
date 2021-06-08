@@ -55,9 +55,12 @@ while abs(q[0] - motors_set[0].position) > inaccuracy or abs(q[1] - motors_set[1
         sum[i] += e[i]
         last_e[i] = e[i]
         last_t = time.time()
-    motorA.run_direct(duty_cycle_sp=saturate(U[0], -100, 100))
-    motorB.run_direct(duty_cycle_sp=saturate(U[1], -100, 100))
-    motorC.run_direct(duty_cycle_sp=saturate(U[2], -100, 100))
+    if abs(q[0] - motors_set[0].position) > inaccuracy:
+        motorA.run_direct(duty_cycle_sp=saturate(U[0], -100, 100))
+    if abs(q[1] - motors_set[1].position) > inaccuracy:
+        motorB.run_direct(duty_cycle_sp=saturate(U[1], -100, 100))
+    if abs(q[2] - motors_set[2].position) > inaccuracy:
+        motorC.run_direct(duty_cycle_sp=saturate(U[2], -100, 100))
     file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\n')
 motorA.run_direct(duty_cycle_sp=0)
 motorB.run_direct(duty_cycle_sp=0)
