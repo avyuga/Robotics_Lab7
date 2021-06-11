@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.14)  8 JUN 2021 12:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.14)  11 JUN 2021 17:20
 entering extended mode
 **./Lab7.tex
 (Lab7.tex
@@ -563,13 +563,28 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 )
-(C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
-\wrapoverhang=\dimen176
-\WF@size=\dimen177
-\c@WF@wrappedlines=\count301
-\WF@box=\box58
-\WF@everypar=\toks28
-Package: wrapfig 2003/01/31  v 3.6
+(C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/floatflt\floatflt.s
+ty
+Package: floatflt 1997/07/16 v. 1.31
+\c@OptionTest=\count301
+\figbox=\box58
+\tabbox=\box59
+\pagebox=\box60
+\ffigcount=\count302
+\ftabcount=\count303
+\fftest=\count304
+\hangcount=\count305
+\nosuccesstryfig=\count306
+\nosuccesstrytab=\count307
+\figgutter=\dimen176
+\tabgutter=\dimen177
+\htdone=\dimen178
+\pageht=\dimen179
+\startpageht=\dimen180
+\tabbredd=\dimen181
+\floatfltwidth=\dimen182
+\fltitemwidth=\dimen183
+\outputpretest=\toks28
 )
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/matlab-prettifier\m
 atlab-prettifier.sty
@@ -596,34 +611,34 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.s
 ty
-\lst@mode=\count302
-\lst@gtempboxa=\box59
+\lst@mode=\count308
+\lst@gtempboxa=\box61
 \lst@token=\toks29
-\lst@length=\count303
-\lst@currlwidth=\dimen178
-\lst@column=\count304
-\lst@pos=\count305
-\lst@lostspace=\dimen179
-\lst@width=\dimen180
-\lst@newlines=\count306
-\lst@lineno=\count307
-\lst@maxwidth=\dimen181
+\lst@length=\count309
+\lst@currlwidth=\dimen184
+\lst@column=\count310
+\lst@pos=\count311
+\lst@lostspace=\dimen185
+\lst@width=\dimen186
+\lst@newlines=\count312
+\lst@lineno=\count313
+\lst@maxwidth=\dimen187
 
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.st
 y
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count308
-\lst@skipnumbers=\count309
-\lst@framebox=\box60
+\c@lstnumber=\count314
+\lst@skipnumbers=\count315
+\lst@framebox=\box62
 )
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.c
 fg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-\netBracketCount@mlpr=\count310
-\blkLvl@mlpr=\count311
-\blkLvlAtClassdef@mlpr=\count312
+\netBracketCount@mlpr=\count316
+\blkLvl@mlpr=\count317
+\blkLvlAtClassdef@mlpr=\count318
 \emHeight@mlpr=\skip57
 \jayDepth@mlpr=\skip58
 \sectionRuleOffset@mlpr=\skip59
@@ -638,8 +653,8 @@ runsystem(del Lab7.aex)...executed.
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend
 -pdftex.def
 File: l3backend-pdftex.def 2021-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count313
-\l__pdf_internal_box=\box61
+\l__color_backend_stack_int=\count319
+\l__pdf_internal_box=\box63
 ) (Lab7.aux)
 \openout1 = `Lab7.aux'.
 
@@ -699,16 +714,16 @@ LaTeX Info: Redefining \th on input line 23.
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pd
 f.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count314
-\scratchdimen=\dimen182
-\scratchbox=\box62
-\nofMPsegments=\count315
-\nofMParguments=\count316
+\scratchcounter=\count320
+\scratchdimen=\dimen188
+\scratchbox=\box64
+\nofMPsegments=\count321
+\nofMParguments=\count322
 \everyMPshowfont=\toks31
-\MPscratchCnt=\count317
-\MPscratchDim=\dimen183
-\MPnumerator=\count318
-\makeMPintoPDFobject=\count319
+\MPscratchCnt=\count323
+\MPscratchDim=\dimen189
+\MPnumerator=\count324
+\makeMPintoPDFobject=\count325
 \everyMPtoPDFconversion=\toks32
 )
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstop
@@ -717,21 +732,46 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-\c@lstlisting=\count320
+\c@lstlisting=\count326
  [1
 
 {C:/Users/Anastasia/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<str_formulas.png, id=10, 307.1475pt x 363.3575pt>
-File: str_formulas.png Graphic file (type png)
-<use str_formulas.png>
-Package pdftex.def Info: str_formulas.png  used on input line 80.
-(pdftex.def)             Requested size: 200.0pt x 236.60094pt.
+<robot_photo1.jpg, id=10, 877.77937pt x 619.56468pt>
+File: robot_photo1.jpg Graphic file (type jpg)
+<use robot_photo1.jpg>
+Package pdftex.def Info: robot_photo1.jpg  used on input line 66.
+(pdftex.def)             Requested size: 250.0pt x 176.45486pt.
+<robot_photo2.jpg, id=11, 816.80156pt x 733.99219pt>
+File: robot_photo2.jpg Graphic file (type jpg)
+<use robot_photo2.jpg>
+Package pdftex.def Info: robot_photo2.jpg  used on input line 70.
+(pdftex.def)             Requested size: 198.0pt x 177.92009pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 78--103
+Overfull \hbox (47.74884pt too wide) in paragraph at lines 64--72
 []$[]$ $[]$ 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+<str_formulas.png, id=12, 307.1475pt x 363.3575pt>
+File: str_formulas.png Graphic file (type png)
+<use str_formulas.png>
+Package pdftex.def Info: str_formulas.png  used on input line 96.
+(pdftex.def)             Requested size: 200.0pt x 236.60094pt.
+
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 94--119
+[]$[]$ $[]$ 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[1 <./robot_photo1.jpg> <./robot_photo2.jpg>]
 \openout3 = `Lab7.pyg'.
+
 
 (_minted-Lab7/default-pyg-prefix.pygstyle) (_minted-Lab7/default.pygstyle)
 (_minted-Lab7/4601535586A7A1DC913CC7E3D0CD4573588943EAB86C1B14BA4853C419770085.
@@ -744,17 +784,17 @@ File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 2.
- [1 <./str_formulas.png>])
+)
 \openout3 = `Lab7.pyg'.
 
 
-(_minted-Lab7/07ABD08776A9E413A1541DDB5D8943F7588943EAB86C1B14BA4853C419770085.
-pygtex)
+(_minted-Lab7/E5DF376EC47BF3088614CCE9BC6BB902588943EAB86C1B14BA4853C419770085.
+pygtex [2 <./str_formulas.png>])
 \openout3 = `Lab7.pyg'.
 
 
 (_minted-Lab7/4F1C40042E0FEF6584EF4AA67B22D382588943EAB86C1B14BA4853C419770085.
-pygtex [2])
+pygtex [3])
 \openout3 = `Lab7.pyg'.
 
 
@@ -766,57 +806,125 @@ LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-[3])
-<color_sensor.jpg, id=35, 631.60968pt x 572.1375pt>
+[4])
+\openout4 = `Lab7.pyg'.
+
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
+minted-Lab7/FCC2375034701C5C808B963E860DCB54588943EAB86C1B14BA4853C419770085.py
+gtex Lab7.pyg)...executed.
+
+
+(_minted-Lab7/FCC2375034701C5C808B963E860DCB54588943EAB86C1B14BA4853C419770085.
+pygtex)
+\openout3 = `Lab7.pyg'.
+
+
+(_minted-Lab7/E215B0D048E65644DB8DE7597EFFA5DC588943EAB86C1B14BA4853C419770085.
+pygtex)
+\openout3 = `Lab7.pyg'.
+
+
+(_minted-Lab7/B1A9D56CFB2449C5E3B91BBDDE212ED0748E6CB39249CD551EB469C97D974A56.
+pygtex [5]
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <8> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 15.
+)
+<travel_1.jpg, id=44, 1688.3075pt x 899.36pt>
+File: travel_1.jpg Graphic file (type jpg)
+<use travel_1.jpg>
+Package pdftex.def Info: travel_1.jpg  used on input line 355.
+(pdftex.def)             Requested size: 500.0pt x 266.35185pt.
+
+Overfull \hbox (44.75589pt too wide) in paragraph at lines 355--356
+ [][] 
+ []
+
+<travel_2.jpg, id=45, 545.03625pt x 413.545pt>
+File: travel_2.jpg Graphic file (type jpg)
+<use travel_2.jpg>
+Package pdftex.def Info: travel_2.jpg  used on input line 361.
+(pdftex.def)             Requested size: 300.0pt x 227.62082pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./travel_1.jpg>]
+<color_sensor.jpg, id=50, 631.60968pt x 572.1375pt>
 File: color_sensor.jpg Graphic file (type jpg)
 <use color_sensor.jpg>
-Package pdftex.def Info: color_sensor.jpg  used on input line 269.
+Package pdftex.def Info: color_sensor.jpg  used on input line 372.
 (pdftex.def)             Requested size: 91.04742pt x 82.47328pt.
+
+Package floatflt Message: Floating figure 1 set on page 7
 \openout3 = `Lab7.pyg'.
 
 
 (_minted-Lab7/A1E9701B5922C04CDC0954CA3576D6E3588943EAB86C1B14BA4853C419770085.
-pygtex [4 <./color_sensor.jpg>])
+pygtex)
 \openout3 = `Lab7.pyg'.
 
 
 (_minted-Lab7/A944A7A97CA7F54A6615E0D788D4C18D748E6CB39249CD551EB469C97D974A56.
-pygtex) [5] (Lab7.aux)
+pygtex [7 <./travel_2.jpg> <./color_sensor.jpg>])
+<color_graph.png, id=54, 1445.4pt x 685.8122pt>
+File: color_graph.png Graphic file (type png)
+<use color_graph.png>
+Package pdftex.def Info: color_graph.png  used on input line 408.
+(pdftex.def)             Requested size: 500.0pt x 237.23334pt.
+
+Overfull \hbox (44.75589pt too wide) in paragraph at lines 408--409
+ [][] 
+ []
+
+<robot_cups.jpg, id=55, 770.12718pt x 825.83531pt>
+File: robot_cups.jpg Graphic file (type jpg)
+<use robot_cups.jpg>
+Package pdftex.def Info: robot_cups.jpg  used on input line 431.
+(pdftex.def)             Requested size: 300.0pt x 321.69644pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8 <./color_graph.png (PNG copy)>]
+runsystem(del _minted-Lab7\15FEAC69D865AA4D2F0CCD5486AF855B588943EAB86C1B14BA48
+53C419770085.pygtex)...executed.
+
+ [9 <./robot_cups.jpg>] (Lab7.aux)
 runsystem(del Lab7.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 9719 strings out of 479334
- 160871 string characters out of 2855184
- 542134 words of memory out of 3000000
- 26970 multiletter control sequences out of 15000+200000
- 416548 words of font info for 53 fonts, out of 3000000 for 9000
+ 9800 strings out of 479334
+ 163395 string characters out of 2855184
+ 551187 words of memory out of 3000000
+ 27033 multiletter control sequences out of 15000+200000
+ 417703 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,11n,88p,788b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 85i,11n,88p,900b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-tctt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a
-/dpi600\lait1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/l
-h/lh-t2a/dpi600\latt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/
-ljfour/lh/lh-t2a/dpi600\larm0500.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\f
-onts/pk/ljfour/lh/lh-t2a/dpi600\labx1000.pk> <C:\Users\Anastasia\AppData\Local\
-MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1200.pk> <C:\Users\Anastasia\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1000.pk> <C:\Users\Anastasi
-a\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1440.pk> <C:\Users\
-Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1728.pk> <C
-:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm144
-0.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600
-\larm1200.pk><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmex10.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Anastasia/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Anastasia/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Anasta
-sia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
-Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmsy5.pfb>
-Output written on Lab7.pdf (6 pages, 353541 bytes).
+tcrm1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\tctt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour
+/lh/lh-t2a/dpi600\lait1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/p
+k/ljfour/lh/lh-t2a/dpi600\latt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX
+\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm0500.pk> <C:\Users\Anastasia\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1000.pk> <C:\Users\Anastasia\AppD
+ata\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1200.pk> <C:\Users\Anasta
+sia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1000.pk> <C:\User
+s\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1440.pk> 
+<C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1
+728.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi6
+00\larm1440.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-
+t2a/dpi600\larm1200.pk><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Anastasia/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Anastasia/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Anastasi
+a/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Us
+ers/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr7.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
+Output written on Lab7.pdf (10 pages, 1301764 bytes).
 PDF statistics:
- 511 PDF objects out of 1000 (max. 8388607)
+ 566 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

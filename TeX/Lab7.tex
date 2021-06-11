@@ -59,7 +59,23 @@
 Ознакомиться со способом нахождения параметров манипулятора и научиться переходить из декартовых координат в обобщенные и обратно.
 
 \section{Описание собранного робота}
+\subsection*{Фотографии собранного робота}
+\begin{figure}[h!]
+    \begin{minipage}{.55\textwidth}
+        \centering
+        \includegraphics[width=250 pt]{robot_photo1.jpg}
+    \end{minipage}
+    \begin{minipage}{.55\textwidth}
+        \centering
+        \includegraphics[width=198 pt]{robot_photo2.jpg}
+    \end{minipage}
+    \caption{Фотографии робота}
+\end{figure}
+\FloatBarrier
+\par У первого и второго мотора передаточное отношение равно 5, у третьего - $\frac{5}{3}$ (при нумерации моторов снизу вверх).
 \subsection*{Параметры Денавита-Харденберга}
+\par Для упрощения расчетов и использования четырех величин вместо 6 можно использовать параметры Денавита-Хартенберга. Это один из наиболее общих способов определить координаты хвата манипулятора по обобщенным координатам манипулятора (т. е. по углам, на которые поворачиваются звенья). Безусловно, координаты можно рассчитать и геометрически, как сделано далее, но в случае, когда звеньев много, этот способ оказывается неудобным. \\
+
 \begin{tabular}{|l||c|c|c|c|}
 \hline
 Звено i & $a_i$ & $\alpha_i$ & $d_i$ & $\theta_i$\\
@@ -122,8 +138,34 @@ def straight_transfer_formulas(theta1, theta2, theta3):
 
 \end{minted}
 
+
 \subsection{Функция для перехода из обощенной СК в Декартову с помощью матричных расчетов}
+
 \subsubsection*{Вывод формул}
+Матрица перехода из обобщенной СК в Декартову является произведением матриц перехода от $i-1$-го звена к $i$-ому: $T^0_n=T^0_1 \cdot T^1_2 \cdot T^2_3 $. \\
+Итоговая матрица - результат следующего выражения:
+\begin{center}
+$T^0_3 = \begin{bmatrix}
+\cos{\theta_1} & -\sin{\theta_1} \cos{\alpha_1} & \sin{\theta_1} \sin{\alpha_1} & a_1 \cos{\theta_1} \\
+\sin{\theta_1} & \cos{\theta_1} \cos{\alpha_1} & -\cos{\theta_1} \sin{\alpha_1} & a_1 \sin{\theta_1} \\
+0 & \sin{\alpha_1} & \cos{\alpha_1} & d_1\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos{\theta_2} & -\sin{\theta_2} \cos{\alpha_2} & \sin{\theta_2} \sin{\alpha_2} & a_2 \cos{\theta_2} \\
+\sin{\theta_2} & \cos{\theta_2} \cos{\alpha_2} & -\cos{\theta_2} \sin{\alpha_2} & a_2 \sin{\theta_2} \\
+0 & \sin{\alpha_2} & \cos{\alpha_2} & d_2\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos{\theta_3} & -\sin{\theta_3} \cos{\alpha_3} & \sin{\theta_3} \sin{\alpha_3} & a_3 \cos{\theta_3} \\
+\sin{\theta_3} & \cos{\theta_3} \cos{\alpha_3} & -\cos{\theta_3} \sin{\alpha_3} & a_3 \sin{\theta_3} \\
+0 & \sin{\alpha_3} & \cos{\alpha_3} & d_3\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}$
+\end{center}
 
 \subsubsection*{Код}
 \begin{minted}[linenos=true, breaklines=true]{python}
@@ -137,7 +179,6 @@ def straight_transfer(theta1, theta2, theta3):
 
     a = [0, 0, 0.128, 0.128]  # массив значений a_i
     alpha = [0, pi / 2, 0, 0]
-    #alpha = [0, pi / 2, 0, pi / 2]
     d = [0, 0.18, 0, 0]  # массив значений d_i
 
     T_0_1 = np.array([[cos(theta1), -sin(theta1) * cos(alpha[1]), sin(theta1) * sin(alpha[1]), a[1] * cos(theta1)],
@@ -259,20 +300,81 @@ for i in range(3):
 file.close()
 \end{minted}
 
+\par Код, реализующий движение по нескольким заданным точкам, аналогичен вышеуказанному, с единственной разницей в том, что есть массив массивов с точками, которые необходимо обойти, и внешний цикл \mintinline{python}{for j in range(n)}.
+
+\subsection{Одновременный поворот звеньев манипулятора на заданные углы}
+\par Единственное отличие от кода, представленного выше, заключается в следующем участке, где определяется управляющее воздействие.
+\begin{minted}[linenos=true, breaklines=true]{python}
+while abs(q[0] - motors_set[0].position) > inaccuracy or abs(q[1] - motors_set[1].position) > inaccuracy or abs(q[2] - motors_set[2].position) > inaccuracy:
+    for i in range(3):
+        e[i] = q[i] - motors_set[i].position
+        dt = time.time() - last_t
+        U[i] = k_p[i] * e[i] + k_d[i] * (e[i] - last_e[i]) / dt + k_i[i] * sum[i] * dt
+        U[i] = U[i]/U_max*50
+        sum[i] += e[i]
+        last_e[i] = e[i]
+        last_t = time.time()
+        if abs(q[i] - motors_set[i].position) > inaccuracy: motors_set[i].run_direct(duty_cycle_sp=saturate(U[i], -100, 100))
+    file.write(str(motorA.position) + '\t' + str(motorB.position) + '\t' + str(motorC.position) + '\n')
+\end{minted}
+
+
+
+\section{Построенные в Matlab траектории движения робота}
+\subsection{Скрипт на Matlab}
+\begin{minted}[linenos=true, frame=single,framesep=10pt,breaklines=true, breakafter=true]{Matlab}
+results=dlmread('C:\Users\Anastasia\PycharmProjects\Robotics_Lab7\OUT 25.05\square2\square2_4___-90_90_0.txt'); %считываем файл
+theta1=results(:,1);
+theta2=results(:,2);
+theta3=results(:,3);
+
+
+theta1 = theta1*pi/180/5;
+theta2 = theta2*pi/180/(-5);
+theta3 = theta3*pi/180/(-5/3);
+theta3 = theta2-theta3;
+
+a = [ 0.007, 0.128, 0.128];
+d = [ 0.18, 0, 0];
+for i = 1:size(results)
+    x(i)=(a(2)*cos(theta2(i)) + a(3)*cos(theta3(i)))*(cos(theta1(i)));
+    y(i) = (a(2) * cos(theta2(i)) + a(3) * cos(theta3(i)))*(sin(theta1(i)));
+    z(i) = d(1) + a(2) * sin(theta2(i)) + a(3) * sin(theta3(i));
+end 
+
+hold on; 
+line = plot3(x,y,z, 'magenta');
+line.LineWidth = 2.5;
+grid on;
+
+\end{minted}
+
+\subsection{Построенные графики}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=500 pt]{travel_1.jpg}
+    \caption{Обход манипулятором 5 точек с поочередным вращением моторов}
+\end{figure}
+\FloatBarrier
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=300 pt]{travel_2.jpg}
+    \caption{Перемещение в точку с одновременным вращением моторов}
+\end{figure}
+\FloatBarrier
+
 
 \section{Использование датчика цвета ColorSensor}
-\par В процессе работы появилась идея с помощью манипулятора реализовать механизм, который будет определять цвет предмета и записывать его координату. \\
-\parbox[b][4 cm][t]{50 mm}{
-\vspace{0.5 cm}
-    \centering
+\par В процессе работы появилась идея с помощью манипулятора реализовать механизм, который будет определять цвет предмета и записывать его координату.
+\begin{floatingfigure}[l]{3.5 cm}
+    \noindent
+    \hfill
     \includegraphics[width=.2\textwidth]{color_sensor.jpg}
-}
-\parbox[b][4 cm][t]{100 mm}{
-  \vspace{0.5 cm}
-\par Так как датчик определяет цвета достаточно неточно, то мы придумали некоторый алгоритм калибровки для попадания в классический 8-битный RGB интервал. Для этого мы удерживали датчик, смотрящий на белую бумагу, в одном положении, искали максимальное значение каждой компоненты света. В файл записывалось текущее значение компоненты, деленной на соответствующую максимальную и умноженное на 255. 
-}
-\par
-Так как точность все равно невелика, то возникла идея построить график каждой из компонент и выделить пиковые значения. 
+    \hfill
+\end{floatingfigure}
+\par Так как датчик определяет цвета достаточно неточно, то мы придумали некоторый алгоритм калибровки для попадания в классический 8-битный RGB интервал. Для этого мы удерживали датчик, смотрящий на белую бумагу, в одном положении, искали максимальное значение каждой компоненты света. В файл записывалось текущее значение компоненты, деленной на соответствующую максимальную и умноженное на 255. Также возникла идея построить график каждой из компонент и выделить пиковые значения. 
+
+
 \subsection{Скрипты для реализации этой задачи}
 \subsubsection*{Код для калибровки датчика}
 \begin{minted}[linenos=true, breaklines=true]{python}
@@ -300,8 +402,37 @@ plot(time, green, 'g');
 plot(time, blue, 'b');
 \end{minted}
 
+\subsection{Полученный график интенсивностей RGB-компонент отраженного света}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=500 pt]{color_graph.png}
+    \caption{График интенсивностей компонент}
+\end{figure}
 
+\par При анализе графика можно заметить 4 момента времени, в которые так или иначе устанавливается некоторое пиковое(т. е. максимальное или минимальное) значение по какой-то из компонент.
+\begin{itemize}
+\item Максимальное значение у красного, минимальные у синего и зеленого определяют красный цвет
+\item Значение эеленого больше, чем у синего и красного - значит, цвет - зеленый
+\item Минимум по всем компонентам определяет черный цвет
+\item Смесь красного и зеленого с минимальным количеством синего определяет желтый цвет. На этом моменте манипулятор замер, поэтому это значение является не пиковым, а установившимся. Однако, если бы робот продолжил движение, то значения бы также продолжили меняться.
+\end{itemize}
+
+\par Тогда, если проводить расчет для каждой точки, то получаются следующий результаты:
+\begin{itemize}
+\item Координата красной крышки: $(0.07 , -0.08 , 0)$
+\item Координата зеленого объекта: $(0.1 , -0.025 , 0)$
+\item Координата черной крышки: $(0.09 , 0.06 , 0)$
+\item Координата желтой детали: $(0.02 , 0.11 , 0)$
+\end{itemize}
+Координата z у всех трех объектов нулевая, потому что они лежат в плоскости $XoY$.
+\par Действительно, аналитические выкладки верны, так как на самом деле ситуация выглядела следующим образом:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=300 pt]{robot_cups.jpg}
+    \caption{Робот с крышками}
+\end{figure}
 
 \section{Выводы}
-
+\par В процессе выполнения лабораторной работы ознакомились со способами нахождения параметров манипулятора и научились переходить из декартовых координат в обобщенные и обратно.
+\par Более того, была поставлена задача - научить робота распознавать цвета и узнать координату предмета того или иного цвета. Задача выполняется в полуавтоматическом режиме - робот записывает данные в файл, затем происходит ручной анализ графика и выборка необходимых углов, по которым в дальнейшем происходит расчет координат.
 \end{document}

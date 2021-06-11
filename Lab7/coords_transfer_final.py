@@ -32,7 +32,6 @@ def straight_transfer(theta1, theta2, theta3):
 
     a = [0, 0, 0.128, 0.128]  # массив значений a_i
     alpha = [0, pi / 2, 0, 0]
-    #alpha = [0, pi / 2, 0, pi / 2]
     d = [0, 0.18, 0, 0]  # массив значений d_i
 
     T_0_1 = np.array([[cos(theta1), -sin(theta1) * cos(alpha[1]), sin(theta1) * sin(alpha[1]), a[1] * cos(theta1)],
@@ -87,5 +86,4 @@ def backwards_transfer(x, y, z):
 
 
 # принимает значения в градусах
-straight_transfer_formulas(-12.4, -11.0, 87.6)
-print(" ")
+straight_transfer_formulas(80.4, -11.0, 87.6)
