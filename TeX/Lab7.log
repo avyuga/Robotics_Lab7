@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.14)  11 JUN 2021 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.4.14)  12 JUN 2021 12:10
 entering extended mode
 **./Lab7.tex
 (Lab7.tex
@@ -751,45 +751,45 @@ Overfull \hbox (47.74884pt too wide) in paragraph at lines 64--72
 []$[]$ $[]$ 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
-
- []
-
-<str_formulas.png, id=12, 307.1475pt x 363.3575pt>
-File: str_formulas.png Graphic file (type png)
-<use str_formulas.png>
-Package pdftex.def Info: str_formulas.png  used on input line 96.
-(pdftex.def)             Requested size: 200.0pt x 236.60094pt.
-
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 94--119
-[]$[]$ $[]$ 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[1 <./robot_photo1.jpg> <./robot_photo2.jpg>]
-\openout3 = `Lab7.pyg'.
-
+\openout4 = `Lab7.pyg'.
 
 (_minted-Lab7/default-pyg-prefix.pygstyle) (_minted-Lab7/default.pygstyle)
-(_minted-Lab7/4601535586A7A1DC913CC7E3D0CD4573588943EAB86C1B14BA4853C419770085.
+(_minted-Lab7/116488487E946F00F9A23EE8433A32E1588943EAB86C1B14BA4853C419770085.
 pygtex
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
 1.
 
 (C:\Users\Anastasia\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)
+))
+Overfull \hbox (6.6431pt too wide) in paragraph at lines 77--81
+[] 
+ []
+
+<str_formulas.png, id=12, 307.1475pt x 363.3575pt>
+File: str_formulas.png Graphic file (type png)
+<use str_formulas.png>
+Package pdftex.def Info: str_formulas.png  used on input line 100.
+(pdftex.def)             Requested size: 200.0pt x 236.60094pt.
+
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 98--123
+[]$[]$ $[]$ 
+ []
+
+[1 <./robot_photo1.jpg> <./robot_photo2.jpg>]
+\openout3 = `Lab7.pyg'.
+
+
+(_minted-Lab7/4601535586A7A1DC913CC7E3D0CD4573588943EAB86C1B14BA4853C419770085.
+pygtex
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 2.
-)
+) [2 <./str_formulas.png>]
 \openout3 = `Lab7.pyg'.
 
 
 (_minted-Lab7/E5DF376EC47BF3088614CCE9BC6BB902588943EAB86C1B14BA4853C419770085.
-pygtex [2 <./str_formulas.png>])
+pygtex)
 \openout3 = `Lab7.pyg'.
 
 
@@ -798,7 +798,7 @@ pygtex [3])
 \openout3 = `Lab7.pyg'.
 
 
-(_minted-Lab7/828DB18EC36A4B67C36CE30B0F9F0C2B588943EAB86C1B14BA4853C419770085.
+(_minted-Lab7/354E0B19D90A5ECD29E1DB532175E91E588943EAB86C1B14BA4853C419770085.
 pygtex
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
 31.
@@ -808,10 +808,6 @@ File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 [4])
 \openout4 = `Lab7.pyg'.
-
-runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -o _
-minted-Lab7/FCC2375034701C5C808B963E860DCB54588943EAB86C1B14BA4853C419770085.py
-gtex Lab7.pyg)...executed.
 
 
 (_minted-Lab7/FCC2375034701C5C808B963E860DCB54588943EAB86C1B14BA4853C419770085.
@@ -829,29 +825,26 @@ pygtex [5]
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 15.
 )
-<travel_1.jpg, id=44, 1688.3075pt x 899.36pt>
+<travel_1.jpg, id=45, 1688.3075pt x 899.36pt>
 File: travel_1.jpg Graphic file (type jpg)
 <use travel_1.jpg>
-Package pdftex.def Info: travel_1.jpg  used on input line 355.
+Package pdftex.def Info: travel_1.jpg  used on input line 359.
 (pdftex.def)             Requested size: 500.0pt x 266.35185pt.
 
-Overfull \hbox (44.75589pt too wide) in paragraph at lines 355--356
+Overfull \hbox (44.75589pt too wide) in paragraph at lines 359--360
  [][] 
  []
 
-<travel_2.jpg, id=45, 545.03625pt x 413.545pt>
+<travel_2.jpg, id=46, 545.03625pt x 413.545pt>
 File: travel_2.jpg Graphic file (type jpg)
 <use travel_2.jpg>
-Package pdftex.def Info: travel_2.jpg  used on input line 361.
+Package pdftex.def Info: travel_2.jpg  used on input line 365.
 (pdftex.def)             Requested size: 300.0pt x 227.62082pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [6 <./travel_1.jpg>]
-<color_sensor.jpg, id=50, 631.60968pt x 572.1375pt>
+<color_sensor.jpg, id=51, 631.60968pt x 572.1375pt>
 File: color_sensor.jpg Graphic file (type jpg)
 <use color_sensor.jpg>
-Package pdftex.def Info: color_sensor.jpg  used on input line 372.
+Package pdftex.def Info: color_sensor.jpg  used on input line 376.
 (pdftex.def)             Requested size: 91.04742pt x 82.47328pt.
 
 Package floatflt Message: Floating figure 1 set on page 7
@@ -865,47 +858,52 @@ pygtex)
 
 (_minted-Lab7/A944A7A97CA7F54A6615E0D788D4C18D748E6CB39249CD551EB469C97D974A56.
 pygtex [7 <./travel_2.jpg> <./color_sensor.jpg>])
-<color_graph.png, id=54, 1445.4pt x 685.8122pt>
+<color_graph.png, id=55, 1445.4pt x 685.8122pt>
 File: color_graph.png Graphic file (type png)
 <use color_graph.png>
-Package pdftex.def Info: color_graph.png  used on input line 408.
+Package pdftex.def Info: color_graph.png  used on input line 412.
 (pdftex.def)             Requested size: 500.0pt x 237.23334pt.
 
-Overfull \hbox (44.75589pt too wide) in paragraph at lines 408--409
+Overfull \hbox (44.75589pt too wide) in paragraph at lines 412--413
  [][] 
  []
 
-<robot_cups.jpg, id=55, 770.12718pt x 825.83531pt>
+<robot_cups.jpg, id=56, 770.12718pt x 825.83531pt>
 File: robot_cups.jpg Graphic file (type jpg)
 <use robot_cups.jpg>
-Package pdftex.def Info: robot_cups.jpg  used on input line 431.
-(pdftex.def)             Requested size: 300.0pt x 321.69644pt.
+Package pdftex.def Info: robot_cups.jpg  used on input line 435.
+(pdftex.def)             Requested size: 250.0pt x 268.07826pt.
+<cups_coords.jpg, id=57, 803.0pt x 602.25pt>
+File: cups_coords.jpg Graphic file (type jpg)
+<use cups_coords.jpg>
+Package pdftex.def Info: cups_coords.jpg  used on input line 440.
+(pdftex.def)             Requested size: 300.0pt x 225.00694pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <./color_graph.png (PNG copy)>]
-runsystem(del _minted-Lab7\15FEAC69D865AA4D2F0CCD5486AF855B588943EAB86C1B14BA48
-53C419770085.pygtex)...executed.
 
- [9 <./robot_cups.jpg>] (Lab7.aux)
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8 <./color_graph.png (PNG copy)>] [9 <./robot_cups.jpg> <./cups_coords.jpg>]
+(Lab7.aux)
 runsystem(del Lab7.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 9800 strings out of 479334
- 163395 string characters out of 2855184
- 551187 words of memory out of 3000000
- 27033 multiletter control sequences out of 15000+200000
+ 9809 strings out of 479334
+ 163810 string characters out of 2855184
+ 556990 words of memory out of 3000000
+ 27039 multiletter control sequences out of 15000+200000
  417703 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 85i,11n,88p,900b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 85i,11n,88p,1905b,629s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
 ec/dpi600\tctt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour
 /lh/lh-t2a/dpi600\lait1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX\fonts/p
-k/ljfour/lh/lh-t2a/dpi600\latt1000.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX
-\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm0500.pk> <C:\Users\Anastasia\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1000.pk> <C:\Users\Anastasia\AppD
+k/ljfour/lh/lh-t2a/dpi600\larm0500.pk> <C:\Users\Anastasia\AppData\Local\MiKTeX
+\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1000.pk> <C:\Users\Anastasia\AppData\Loca
+l\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt1000.pk> <C:\Users\Anastasia\AppD
 ata\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1200.pk> <C:\Users\Anasta
 sia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\larm1000.pk> <C:\User
 s\Anastasia\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\labx1440.pk> 
@@ -921,10 +919,11 @@ ers/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
 0.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmr7.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/Anastasia/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy5.pfb>
-Output written on Lab7.pdf (10 pages, 1301764 bytes).
+/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Anastasia/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on Lab7.pdf (10 pages, 1482555 bytes).
 PDF statistics:
- 566 PDF objects out of 1000 (max. 8388607)
+ 571 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
